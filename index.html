@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RoboSim</title>
+    <style>
+      :root { color-scheme: light dark; --ok: #1a7f37; --bad: #cf222e; --line: #8884; }
+      body { font-family: system-ui, sans-serif; margin: 0; padding: 1rem 1.5rem; line-height: 1.6; }
+      h1 { margin: 0 0 .5rem; font-size: 1.4rem; }
+      .ok { color: var(--ok); } .bad { color: var(--bad); }
+      table { border-collapse: collapse; font-size: .85rem; }
+      td { padding: .15rem .6rem; border-bottom: 1px solid var(--line); }
+      #controls { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0; align-items: center; }
+      button, select { font: inherit; padding: .3rem .7rem; }
+      #viewport { width: 100%; max-width: 1100px; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: #0e1319; }
+      #view { width: 100%; height: 100%; display: block; }
+      #stats { font-variant-numeric: tabular-nums; direction: ltr; text-align: left; margin-top: .5rem; font-family: monospace; font-size: .85rem; }
+      #error { color: var(--bad); font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <h1>RoboSim — المرحلة 2: الرسم ثلاثي الأبعاد</h1>
+    <div id="env"></div>
+    <div id="error"></div>
+    <div id="demo" hidden>
+      <div id="controls">
+        <button id="btn-pause">إيقاف مؤقت</button>
+        <button id="btn-step">خطوة واحدة</button>
+        <label>السرعة
+          <select id="sel-speed">
+            <option value="0.25">0.25×</option>
+            <option value="0.5">0.5×</option>
+            <option value="1" selected>1×</option>
+            <option value="2">2×</option>
+            <option value="4">4×</option>
+          </select>
+        </label>
+        <button id="btn-add">+50 جسم</button>
+        <button id="btn-reset">إعادة تعيين</button>
+        <label>الكاميرا
+          <select id="sel-camera">
+            <option value="free" selected>حرة</option>
+            <option value="follow">تتبع جسم</option>
+          </select>
+        </label>
+        <label>الجودة
+          <select id="sel-quality">
+            <option value="auto" selected>تلقائية</option>
+            <option value="0">0 (الأعلى)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3 (بلا ظلال)</option>
+            <option value="4">4 (الأخف)</option>
+          </select>
+        </label>
+        <label><input type="checkbox" id="chk-shadows" checked /> ظلال</label>
+      </div>
+      <div id="viewport"><canvas id="view"></canvas></div>
+      <div id="stats"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

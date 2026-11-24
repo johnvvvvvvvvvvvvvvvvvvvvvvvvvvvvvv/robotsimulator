@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "robotsimulator",
+  "compatibility_date": "2026-11-24",
+  // مواقع ثابتة فقط (بدون كود Worker). ترويسات COOP/COEP تأتي من dist/_headers
+  "assets": {
+    "directory": "./dist"
+  }
+}
